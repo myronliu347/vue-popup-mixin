@@ -25,8 +25,9 @@ var webpackConfig = merge(baseWebpackConfig, {
   externals: {
     vue: {
       root: 'Vue',
-      commonjs: 'vue',
-      amd: 'vue'
+      commonjs2: 'vue',
+      amd: 'vue',
+      commonjs: 'vue'
     }
   },
   vue: {
@@ -40,11 +41,11 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   }
+    // }),
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
     new ExtractTextPlugin(utils.assetsPath('VuePopupMixin.css')),

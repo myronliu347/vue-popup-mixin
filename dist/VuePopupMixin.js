@@ -1,1 +1,345 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require(void 0)):"function"==typeof define&&define.amd?define(["vue"],t):"object"==typeof exports?exports.VuePopupMixin=t(require("vue")):e.VuePopupMixin=t(e.Vue)}(this,function(e){return function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={exports:{},id:o,loaded:!1};return e[o].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="/",t(0)}([function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0}),t.overlay=void 0;var i=n(2);Object.defineProperty(t,"overlay",{enumerable:!0,get:function(){return o(i)["default"]}});var r=n(3),s=o(r);t["default"]={props:{show:{type:Boolean,"default":!1},overlay:{type:Boolean,"default":!0},overlayOpacity:{type:Number,"default":.4},overlayColor:{type:String,"default":"#000"}},attached:function(){this.show&&this.overlay&&s["default"].open(this)},detached:function(){s["default"].close(this)},watch:{show:function(e){e&&this.overlay?s["default"].open(this):s["default"].close(this)}},beforeDestroy:function(){s["default"].close(this)}}},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=20141223;t.getZIndex=function(){return n++},t.getDOM=function o(e){return 3===e.nodeType&&(e=e.nextElementSibling||e.nextSibling,o(e)),e}},function(e,t,n){var o,i;n(5),o=n(4),i=n(6),e.exports=o||{},e.exports.__esModule&&(e.exports=e.exports["default"]),i&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=i)},function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var i=n(7),r=o(i),s=n(2),l=o(s),a=n(1),c=r["default"].extend(l["default"]),u={instances:[],overlay:!1,open:function(e){if(e&&this.instances.indexOf(e)===-1){0===this.instances.length&&this.showOverlay(e.overlayColor,e.overlayOpacity),this.instances.push(e),this.changeOverlayStyle();var t=(0,a.getDOM)(e.$el);t.style.zIndex=(0,a.getZIndex)()}},close:function(e){var t=this,n=this.instances.indexOf(e);n!==-1&&r["default"].nextTick(function(){t.instances.splice(n,1),0===t.instances.length&&t.closeOverlay(),t.changeOverlayStyle()})},showOverlay:function(e,t){var n=this.overlay=new c({el:document.createElement("div")});n.fixed=!0,n.color=e,n.opacity=t,n.onClick=this.handlerOverlayClick.bind(this),n.$appendTo(document.body),this.bodyOverflow=document.body.style.overflow,document.body.style.overflow="hidden"},closeOverlay:function(){if(this.overlay){document.body.style.overflow=this.bodyOverflow;var e=this.overlay;this.overlay=null,e.$remove(function(){e.$destroy()})}},changeOverlayStyle:function(){if(this.overlay&&0!==this.instances.length){var e=this.instances[this.instances.length-1];this.overlay.color=e.overlayColor,this.overlay.opacity=e.overlayOpacity}},handlerOverlayClick:function(){if(0!==this.instances.length){var e=this.instances[this.instances.length-1];e.overlayClick&&e.overlayClick()}}};window.addEventListener("keydown",function(e){if(27===e.keyCode&&u.instances.length>0){var t=u.instances[u.instances.length-1];if(!t)return;t.escPress&&t.escPress()}}),t["default"]=u},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=n(1);t["default"]={props:{fixed:{type:Boolean,"default":!1},onClick:{type:Function},opacity:{type:Number,"default":.4},color:{type:String,"default":"#000"}},data:function(){return{zIndex:(0,o.getZIndex)()}},computed:{style:function(){return{opacity:this.opacity,"background-color":this.color,position:this.fixed?"fixed":"","z-index":this.zIndex}}},methods:{prevent:function(e){e.preventDefault(),e.stopPropagation()},handlerClick:function(){this.onClick&&this.onClick()}}}},function(e,t){},function(e,t){e.exports=" <div class=overlay @click=handlerClick @touchmove=prevent :style=style transition=overlay-fade></div> "},function(t,n){t.exports=e}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("vue"));
+	else if(typeof define === 'function' && define.amd)
+		define(["vue"], factory);
+	else if(typeof exports === 'object')
+		exports["VuePopupMixin"] = factory(require("vue"));
+	else
+		root["VuePopupMixin"] = factory(root["Vue"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_7__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.overlay = undefined;
+
+	var _overlay = __webpack_require__(2);
+
+	Object.defineProperty(exports, 'overlay', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_overlay).default;
+	  }
+	});
+
+	var _popupManager = __webpack_require__(3);
+
+	var _popupManager2 = _interopRequireDefault(_popupManager);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	  props: {
+	    show: {
+	      type: Boolean,
+	      default: false
+	    },
+	    overlay: {
+	      type: Boolean,
+	      default: true
+	    },
+	    overlayOpacity: {
+	      type: Number,
+	      default: 0.4
+	    },
+	    overlayColor: {
+	      type: String,
+	      default: '#000'
+	    }
+	  },
+	  attached: function attached() {
+	    if (this.show && this.overlay) {
+	      _popupManager2.default.open(this);
+	    }
+	  },
+	  detached: function detached() {
+	    _popupManager2.default.close(this);
+	  },
+
+	  watch: {
+	    show: function show(val) {
+	      if (val && this.overlay) {
+	        _popupManager2.default.open(this);
+	      } else {
+	        _popupManager2.default.close(this);
+	      }
+	    }
+	  },
+	  beforeDestroy: function beforeDestroy() {
+	    _popupManager2.default.close(this);
+	  }
+	};
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var zIndex = 20141223;
+
+	var getZIndex = exports.getZIndex = function getZIndex() {
+	  return zIndex++;
+	};
+
+	var getDOM = exports.getDOM = function getDOM(dom) {
+	  if (dom.nodeType === 3) {
+	    dom = dom.nextElementSibling || dom.nextSibling;
+	    getDOM(dom);
+	  }
+	  return dom;
+	};
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(5)
+	__vue_script__ = __webpack_require__(4)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src/overlay.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(6)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vue = __webpack_require__(7);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _overlay = __webpack_require__(2);
+
+	var _overlay2 = _interopRequireDefault(_overlay);
+
+	var _utils = __webpack_require__(1);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Overlay = _vue2.default.extend(_overlay2.default);
+
+	var PopupManager = {
+	  instances: [],
+	  overlay: false,
+
+	  open: function open(instance) {
+	    if (!instance || this.instances.indexOf(instance) !== -1) return;
+	    if (this.instances.length === 0) {
+	      this.showOverlay(instance.overlayColor, instance.overlayOpacity);
+	    }
+	    this.instances.push(instance);
+	    this.changeOverlayStyle();
+	    var dom = (0, _utils.getDOM)(instance.$el);
+	    dom.style.zIndex = (0, _utils.getZIndex)();
+	  },
+	  close: function close(instance) {
+	    var _this = this;
+
+	    var index = this.instances.indexOf(instance);
+	    if (index === -1) return;
+	    _vue2.default.nextTick(function () {
+	      _this.instances.splice(index, 1);
+	      if (_this.instances.length === 0) {
+	        _this.closeOverlay();
+	      }
+	      _this.changeOverlayStyle();
+	    });
+	  },
+	  showOverlay: function showOverlay(color, opacity) {
+	    var overlay = this.overlay = new Overlay({
+	      el: document.createElement('div')
+	    });
+	    overlay.fixed = true;
+	    overlay.color = color;
+	    overlay.opacity = opacity;
+	    overlay.onClick = this.handlerOverlayClick.bind(this);
+	    overlay.$appendTo(document.body);
+
+	    this.bodyOverflow = document.body.style.overflow;
+	    document.body.style.overflow = 'hidden';
+	  },
+	  closeOverlay: function closeOverlay() {
+	    if (!this.overlay) return;
+	    document.body.style.overflow = this.bodyOverflow;
+	    var overlay = this.overlay;
+	    this.overlay = null;
+	    overlay.$remove(function () {
+	      overlay.$destroy();
+	    });
+	  },
+	  changeOverlayStyle: function changeOverlayStyle() {
+	    if (!this.overlay || this.instances.length === 0) return;
+	    var instance = this.instances[this.instances.length - 1];
+	    this.overlay.color = instance.overlayColor;
+	    this.overlay.opacity = instance.overlayOpacity;
+	  },
+	  handlerOverlayClick: function handlerOverlayClick() {
+	    if (this.instances.length === 0) return;
+	    var instance = this.instances[this.instances.length - 1];
+	    if (instance.overlayClick) {
+	      instance.overlayClick();
+	    }
+	  }
+	};
+
+	window.addEventListener('keydown', function (event) {
+	  if (event.keyCode === 27) {
+	    if (PopupManager.instances.length > 0) {
+	      var topInstance = PopupManager.instances[PopupManager.instances.length - 1];
+	      if (!topInstance) return;
+	      if (topInstance.escPress) {
+	        topInstance.escPress();
+	      }
+	    }
+	  }
+	});
+
+	exports.default = PopupManager;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _utils = __webpack_require__(1);
+
+	exports.default = {
+	  props: {
+	    fixed: {
+	      type: Boolean,
+	      default: false
+	    },
+	    onClick: {
+	      type: Function
+	    },
+	    opacity: {
+	      type: Number,
+	      default: 0.4
+	    },
+	    color: {
+	      type: String,
+	      default: '#000'
+	    }
+	  },
+	  data: function data() {
+	    return {
+	      zIndex: (0, _utils.getZIndex)()
+	    };
+	  },
+
+	  computed: {
+	    style: function style() {
+	      return {
+	        'opacity': this.opacity,
+	        'background-color': this.color,
+	        'position': this.fixed ? 'fixed' : '',
+	        'z-index': this.zIndex
+	      };
+	    }
+	  },
+	  methods: {
+	    prevent: function prevent(event) {
+	      event.preventDefault();
+	      event.stopPropagation();
+	    },
+	    handlerClick: function handlerClick() {
+	      if (this.onClick) {
+	        this.onClick();
+	      }
+	    }
+	  }
+	};
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"overlay\" @click=\"handlerClick\" @touchmove=\"prevent\" :style=\"style\" transition=\"overlay-fade\"></div>\n";
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_7__;
+
+/***/ }
+/******/ ])
+});
+;

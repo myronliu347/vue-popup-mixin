@@ -1,6 +1,6 @@
 {
   "name": "vue-popup-mixin",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "基于vue开发的popup 的mixins 用于管理弹出框的遮盖层",
   "author": "liuyy <953788477@qq.com>",
   "main": "dist/VuePopupMixin.js",

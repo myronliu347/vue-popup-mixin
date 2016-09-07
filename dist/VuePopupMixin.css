@@ -1,1 +1,73 @@
-.overlay{position:absolute;left:0;right:0;top:0;bottom:0;background-color:#000;opacity:.4;z-index:1000}.overlay-fade-transition{-webkit-transition:all .3s linear;transition:all .3s linear}.overlay-fade-transition.overlay-fade-enter,.overlay-fade-transition.overlay-fade-leave{opacity:0!important}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: .4;
+  z-index: 1000;
+}
+
+
+.overlay-fade-transition {
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+}
+
+.overlay-fade-transition.overlay-fade-enter,
+.overlay-fade-transition.overlay-fade-leave {
+  opacity: 0 !important;
+}
