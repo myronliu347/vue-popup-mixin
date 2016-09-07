@@ -18,7 +18,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('[name].min.js'),
+    filename: utils.assetsPath('VuePopupMixin.js'),
     library: 'VuePopupMixin',
     libraryTarget: 'umd'
   },
@@ -47,7 +47,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
-    new ExtractTextPlugin(utils.assetsPath('[name].min.css')),
+    new ExtractTextPlugin(utils.assetsPath('VuePopupMixin.css')),
   ]
 })
 

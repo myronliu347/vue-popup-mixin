@@ -48,6 +48,7 @@ npm install vue-popup-mixin --save
 </style>
 
 <script>
+import 'vue-popup-mixin/dist/VuePopupMixin.css';
 import Popup from 'vue-popup-mixin'
 
 export default {
