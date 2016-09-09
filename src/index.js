@@ -1,5 +1,6 @@
 import PopupManager from './popup-manager'
 export {default as overlay} from './overlay'
+export {getZIndex} from './utils'
 
 export default {
   props: {
