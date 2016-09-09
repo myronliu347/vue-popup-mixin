@@ -59,7 +59,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.overlay = undefined;
+	exports.getZIndex = exports.overlay = undefined;
 
 	var _overlay = __webpack_require__(2);
 
@@ -67,6 +67,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  enumerable: true,
 	  get: function get() {
 	    return _interopRequireDefault(_overlay).default;
+	  }
+	});
+
+	var _utils = __webpack_require__(1);
+
+	Object.defineProperty(exports, 'getZIndex', {
+	  enumerable: true,
+	  get: function get() {
+	    return _utils.getZIndex;
 	  }
 	});
 
